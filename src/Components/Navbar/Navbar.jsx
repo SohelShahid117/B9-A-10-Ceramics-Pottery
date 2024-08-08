@@ -50,22 +50,28 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content  rounded-box z-[1] mt-3 w-52 p-2 shadow text-lg"
+            className="menu menu-sm dropdown-content  rounded-box z-[1] mt-3 w-56 p-2 shadow text-lg"
           >
             {navLinks}
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost text-xl">
+          <img
+            src="JS ceramics.jpeg"
+            alt=""
+            srcset=""
+            className="w-20 h-10 rounded-full ml-2"
+          />{" "}
           JS Pottery & Ceramics Store
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-lg">{navLinks}</ul>
+        <ul className="menu menu-horizontal pl-5 ml-20 text-lg">{navLinks}</ul>
       </div>
       <div className="navbar-end">
         {user ? (
           <>
-            <span className="text-sm">{user.email}</span>
+            <span className="text-sm text-orange-200">{user.email}</span>
             <Link className="btn btn-ghost text-xl" onClick={handleLogOut}>
               Sign Out
             </Link>

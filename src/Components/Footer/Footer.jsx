@@ -48,8 +48,8 @@ const Footer = () => {
       </nav>
       <aside>
         <p>
-          Copyright © {new Date().getFullYear()} - All right reserved by JS Art
-          & Craft Store Ltd
+          Copyright © {new Date().getFullYear()} - All right reserved by JS
+          Pottery & Ceramics Store Ltd
         </p>
       </aside>
     </footer>

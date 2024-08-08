@@ -12,6 +12,7 @@ import Login from "./Components/Login/Login";
 import Registration from "./Components/Registration/Registration";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import PotteryDetails from "./Components/PotteryDetails/PotteryDetails";
+import UpdatePottery from "./Components/UpdatePottery/UpdatePottery";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddPottery></AddPottery>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updatePotteryCeramics",
+        element: (
+          <PrivateRoute>
+            <UpdatePottery></UpdatePottery>
           </PrivateRoute>
         ),
       },
