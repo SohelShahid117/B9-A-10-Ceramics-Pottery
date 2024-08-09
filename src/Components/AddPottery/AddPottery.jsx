@@ -70,7 +70,10 @@ const AddPottery = () => {
   return (
     <div className="bg-yellow-50 p-20">
       <h2 className="text-2xl text-center">
-        Add Pottery & Ceramics:Admin Page
+        Add Pottery & Ceramics:Admin Page-
+        <span className="bg-orange-500 p-2 font-bold text-white rounded">
+          CREATE
+        </span>
       </h2>
       <form onSubmit={handleAddPtryCeramics}>
         {/* form row */}

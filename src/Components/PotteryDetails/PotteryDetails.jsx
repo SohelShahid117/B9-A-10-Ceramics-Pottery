@@ -3,35 +3,36 @@ import { useParams } from "react-router-dom";
 
 const PotteryDetails = () => {
   const [data, setData] = useState({});
-  const { id } = useParams();
-  console.log(id);
+  const { _id } = useParams();
+  console.log(_id);
 
   useEffect(() => {
-    fetch("/pottery.json")
+    // fetch("/pottery.json")
+    fetch("http://localhost:3000/myPotteryCeramics")
       .then((response) => response.json())
       .then((datum) => {
-        const val = datum.find((x) => x.id == id);
+        const val = datum.find((x) => x._id == _id);
         console.log(val);
         setData(val);
       })
       .catch((error) => console.error("Error:", error));
   }, []);
 
-  const { p_img, item_name, price, rating, description, status } = data;
+  const { photo, name, price, rating, description, status } = data;
   console.log(data);
 
   return (
     <div>
       <div className="m-4 text-center">
-        <h2 className="text-5xl">{item_name}</h2>
+        <h2 className="text-5xl">{name}</h2>
         <p className="text-2xl mt-2">
-          <span className="font-bold">Price:</span>
+          <span className="font-bold">Price:$</span>
           {price}
         </p>
       </div>
       <img
         className="w-[90%] h-[800px] rounded-badge my-2 p-5 mx-auto"
-        src={p_img}
+        src={photo}
         alt=""
         srcset=""
       />

@@ -24,16 +24,17 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("./pottery.json"),
+        // loader: () => fetch("./pottery.json"),
+        loader: () => fetch("http://localhost:3000/myPotteryCeramics"),
       },
       {
-        path: `/pottery/:id`,
+        path: `/pottery/:_id`,
         element: (
           <PrivateRoute>
             <PotteryDetails></PotteryDetails>
           </PrivateRoute>
         ),
-        loader: () => fetch("/pottery.json"),
+        loader: () => fetch("http://localhost:3000/myPotteryCeramics"),
       },
       {
         path: "/addPotteryCeramics",
@@ -44,12 +45,14 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/updatePotteryCeramics",
+        path: `/updatePotteryCeramics/:_id`,
         element: (
           <PrivateRoute>
             <UpdatePottery></UpdatePottery>
           </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/myPotteryCeramics/${params._id}`),
       },
       {
         path: "/myPotteryCeramics",
@@ -58,6 +61,7 @@ const router = createBrowserRouter([
             <MyPottery></MyPottery>,
           </PrivateRoute>
         ),
+        loader: () => fetch("http://localhost:3000/myPotteryCeramics"),
       },
       {
         path: "/login",
