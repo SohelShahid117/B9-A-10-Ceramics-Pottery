@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import PotteryDetails from "./Components/PotteryDetails/PotteryDetails";
 import UpdatePottery from "./Components/UpdatePottery/UpdatePottery";
 import Users from "./Components/Users/Users";
+import UpdateUsers from "./Components/UpdateUsers/UpdateUsers";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,13 @@ const router = createBrowserRouter([
         path: "/users",
         element: <Users></Users>,
         loader: () => fetch(`http://localhost:3000/users`),
+      },
+      {
+        path: `/updateUsers/:_id`,
+        element: <UpdateUsers></UpdateUsers>,
+        loader: ({ params }) =>
+          // fetch(`http://localhost:3000/users/${params._id}`),
+          fetch(`http://localhost:3000/users/${params._id}`),
       },
     ],
   },

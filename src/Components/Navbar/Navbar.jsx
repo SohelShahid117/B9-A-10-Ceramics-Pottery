@@ -58,15 +58,15 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl">
+        <NavLink to="/" className="btn btn-ghost text-xl">
           <img
             src="JS ceramics.jpeg"
             alt=""
             srcset=""
             className="w-20 h-10 rounded-full ml-2"
-          />{" "}
+          />
           JS Pottery & Ceramics Store
-        </Link>
+        </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal pl-5 ml-24 text-lg">{navLinks}</ul>

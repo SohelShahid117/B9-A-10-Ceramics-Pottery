@@ -1,14 +1,52 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Users = () => {
   const loadedUsers = useLoaderData();
+  //   const { _id } = loadedUsers;
   const [users, setUser] = useState(loadedUsers);
-  console.log(loadedUsers);
+  //   console.log(loadedUsers);
+  console.log(users);
+  //   const { _id, email } = users;
+
+  const handleDelete = (_id) => {
+    console.log("delete", _id);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/users/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "User has been deleted.",
+                icon: "success",
+              });
+              const remainingUser = users.filter((u) => u._id != _id);
+              console.log(remainingUser);
+              setUser(remainingUser);
+            }
+          });
+      }
+    });
+  };
   return (
     <div className="py-5 bg-orange-50">
       <h2 className="text-center text-3xl font-bold">
-        All Users : {loadedUsers.length}
+        All Registered Users : {users.length}
       </h2>
       <div className="overflow-x-auto">
         <table className="table">
@@ -27,10 +65,17 @@ const Users = () => {
                 <td>{user._id}</td>
                 <td>{user.email}</td>
                 <td>
-                  <button className="btn btn-warning">Edit</button>
+                  <NavLink to={`/updateUsers/${user._id}`}>
+                    <button className="btn btn-warning">Edit</button>
+                  </NavLink>
                 </td>
                 <td>
-                  <button className="btn btn-error">Delete</button>
+                  <button
+                    className="btn btn-error"
+                    onClick={() => handleDelete(user._id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
