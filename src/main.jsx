@@ -13,6 +13,7 @@ import Registration from "./Components/Registration/Registration";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import PotteryDetails from "./Components/PotteryDetails/PotteryDetails";
 import UpdatePottery from "./Components/UpdatePottery/UpdatePottery";
+import Users from "./Components/Users/Users";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,11 @@ const router = createBrowserRouter([
       {
         path: "/registration",
         element: <Registration></Registration>,
+      },
+      {
+        path: "/users",
+        element: <Users></Users>,
+        loader: () => fetch(`http://localhost:3000/users`),
       },
     ],
   },

@@ -38,6 +38,23 @@ const Registration = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        const user = { email };
+        console.log(user);
+
+        //CREATE User
+        fetch(`http://localhost:3000/user`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json)
+          .then((data) => {
+            console.log(data);
+            if (data.insertedId) {
+              alert("user database e add/insert hoise");
+            }
+          });
+
         sendEmailVerification(result.user).then(() => {
           alert("check your verified email");
         });

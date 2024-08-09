@@ -26,6 +26,9 @@ const Navbar = () => {
         {/* <Link to="/aboutUs">About Us</Link> */}
         <NavLink to="/aboutUs">About Us</NavLink>
       </li>
+      <li>
+        <NavLink to="/users">All Users</NavLink>
+      </li>
     </>
   );
   return (
@@ -66,7 +69,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal pl-5 ml-20 text-lg">{navLinks}</ul>
+        <ul className="menu menu-horizontal pl-5 ml-24 text-lg">{navLinks}</ul>
       </div>
       <div className="navbar-end">
         {user ? (
