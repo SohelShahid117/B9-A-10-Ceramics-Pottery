@@ -18,8 +18,10 @@ const Registration = () => {
     const form = new FormData(e.currentTarget);
     console.log(form);
     const email = form.get("email");
+    const username = form.get("username");
+    const photo = form.get("photo");
     const password = form.get("password");
-    console.log(email, password);
+    console.log(email, username, photo, password);
 
     const checked = e.target.terms.checked;
     console.log(checked);
@@ -38,11 +40,11 @@ const Registration = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        const user = { email };
+        const user = { email, username, password, photo };
         console.log(user);
 
         //CREATE User
-        fetch(`http://localhost:3000/user`, {
+        fetch(`http://localhost:3000/createUser`, {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(user),
@@ -51,7 +53,7 @@ const Registration = () => {
           .then((data) => {
             console.log(data);
             if (data.insertedId) {
-              alert("user database e add/insert hoise");
+              alert("user database e insert hoise");
             }
           });
 
@@ -101,7 +103,7 @@ const Registration = () => {
               <input
                 type="text"
                 placeholder="Username"
-                namer="username"
+                name="username"
                 className="input input-bordered"
                 required
               />

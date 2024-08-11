@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { NavLink, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Users = () => {
-  const loadedUsers = useLoaderData();
-  //   const { _id } = loadedUsers;
-  const [users, setUser] = useState(loadedUsers);
-  //   console.log(loadedUsers);
+  const [users, setUser] = useState([]);
+
+  //READ DATA
+  useEffect(() => {
+    const getAllUser = async () => {
+      const responseData = await axios.get("http://localhost:3000/getAllUser");
+      console.log(responseData);
+      console.log(responseData.data);
+      setUser(responseData.data);
+    };
+    getAllUser();
+  }, []);
+
   console.log(users);
-  //   const { _id, email } = users;
 
   const handleDelete = (_id) => {
     console.log("delete", _id);
@@ -23,7 +32,7 @@ const Users = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/users/${_id}`, {
+        fetch(`http://localhost:3000/deleteAUser/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
