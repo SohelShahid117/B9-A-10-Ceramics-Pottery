@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
+import Users from "./../Users/Users";
 
 const UpdateUsers = () => {
   const { createUser } = useContext(authContext);
@@ -24,6 +25,7 @@ const UpdateUsers = () => {
       })
       .catch((data) => console.log(data));
   }, [_id]);
+  console.log(user);
 
   const handleUpdateRegister = (e) => {
     e.preventDefault();
@@ -32,8 +34,12 @@ const UpdateUsers = () => {
     const form = new FormData(e.currentTarget);
     console.log(form);
     const email = form.get("email");
+    const username = form.get("username");
+    const photo = form.get("photo");
     const password = form.get("password");
-    console.log(email, password);
+    console.log(email, username, photo, password);
+    const updateUser = { email, username, photo, password };
+    console.log(updateUser);
 
     const checked = e.target.terms.checked;
     console.log(checked);
@@ -52,20 +58,20 @@ const UpdateUsers = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        const user = { email };
-        console.log(user);
+        // const user = { email };
+        // console.log(user);
 
         //Update User
         fetch(`http://localhost:3000/updateOneUser/${_id}`, {
           method: "PUT",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify(user),
+          body: JSON.stringify(updateUser),
         })
-          .then((res) => res.json)
+          .then((res) => res.json())
           .then((data) => {
             console.log(data);
-            if (data.insertedId) {
-              alert("user database e insert hoise");
+            if (data.modifiedCount) {
+              alert("user update data insert to database!!!");
             }
           });
 
@@ -117,6 +123,7 @@ const UpdateUsers = () => {
                 type="text"
                 placeholder="Username"
                 namer="username"
+                defaultValue={user.username}
                 className="input input-bordered"
                 required
               />
@@ -129,6 +136,7 @@ const UpdateUsers = () => {
                 type="text"
                 placeholder="Photo url"
                 name="photo"
+                defaultValue={user.photo}
                 className="input input-bordered"
                 // required
               />
@@ -142,6 +150,7 @@ const UpdateUsers = () => {
                   type={showPassword ? "text" : "password"}
                   placeholder="password"
                   name="password"
+                  defaultValue={user.password}
                   className="input input-bordered w-[93%]"
                   required
                 />

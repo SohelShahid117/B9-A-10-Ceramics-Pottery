@@ -22,6 +22,7 @@ const Registration = () => {
     const photo = form.get("photo");
     const password = form.get("password");
     console.log(email, username, photo, password);
+    const userDetails = { email, username, photo, password };
 
     const checked = e.target.terms.checked;
     console.log(checked);
@@ -40,20 +41,20 @@ const Registration = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
-        const user = { email, username, password, photo };
-        console.log(user);
+        // const user = { email, username, password, photo };
+        // console.log(user);
 
         //CREATE User
         fetch(`http://localhost:3000/createUser`, {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify(user),
+          body: JSON.stringify(userDetails),
         })
-          .then((res) => res.json)
+          .then((res) => res.json())
           .then((data) => {
             console.log(data);
             if (data.insertedId) {
-              alert("user database e insert hoise");
+              alert("user data inserted to database!!!");
             }
           });
 

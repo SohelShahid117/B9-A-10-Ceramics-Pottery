@@ -64,6 +64,7 @@ const Users = () => {
             <tr className="text-xl text-center">
               <th>Id</th>
               <th>Email</th>
+              <th>Username</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -73,6 +74,7 @@ const Users = () => {
               <tr key={user._id} className="text-lg text-center">
                 <td>{user._id}</td>
                 <td>{user.email}</td>
+                <td>{user.username}</td>
                 <td>
                   <NavLink to={`/updateUsers/${user._id}`}>
                     <button className="btn btn-warning">Edit</button>
