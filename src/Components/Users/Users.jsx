@@ -54,28 +54,33 @@ const Users = () => {
   };
   return (
     <div className="py-5 bg-orange-50">
-      <h2 className="text-center text-3xl font-bold">
+      <h2 className="text-center text-3xl font-bold py-5">
         All Registered Users : {users.length}
       </h2>
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table border-orange-900 p-5">
           {/* head */}
           <thead>
-            <tr className="text-xl text-center">
-              <th>Id</th>
-              <th>Email</th>
-              <th>Username</th>
-              <th>Edit</th>
-              <th>Delete</th>
+            <tr className="text-xl text-center border-y-2 border-orange-900 border-x-2 text-black">
+              <th className="border-x-2 border-red-800">S/N</th>
+              <th className="border-x-2 border-red-800">Id</th>
+              <th className="border-x-2 border-red-800">Email</th>
+              <th className="border-x-2 border-red-800">Username</th>
+              <th className="border-x-2 border-red-800">Edit</th>
+              <th className="border-x-2 border-red-800">Delete</th>
             </tr>
           </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user._id} className="text-lg text-center">
-                <td>{user._id}</td>
-                <td>{user.email}</td>
-                <td>{user.username}</td>
-                <td>
+          <tbody className="border-orange-900">
+            {users.map((user, index) => (
+              <tr
+                key={user._id}
+                className="text-lg text-center border-red-800 border-b-2 border-r-2"
+              >
+                <td className="border-x-2 border-red-800">{index + 1}</td>
+                <td className="border-x-2 border-red-800">{user._id}</td>
+                <td className="border-x-2 border-red-800">{user.email}</td>
+                <td className="border-x-2 border-red-800">{user.username}</td>
+                <td className="border-x-2 border-red-800">
                   <NavLink to={`/updateUsers/${user._id}`}>
                     <button className="btn btn-warning">Edit</button>
                   </NavLink>

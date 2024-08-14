@@ -30,13 +30,18 @@ const UpdateUsers = () => {
   const handleUpdateRegister = (e) => {
     e.preventDefault();
     console.log("registration is working");
+    const form = e.target;
+    const email = form.email.value;
+    const username = form.username.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
 
-    const form = new FormData(e.currentTarget);
-    console.log(form);
-    const email = form.get("email");
-    const username = form.get("username");
-    const photo = form.get("photo");
-    const password = form.get("password");
+    // const form = new FormData(e.currentTarget);
+    // console.log(form);
+    // const email = form.get("email");
+    // const username = form.get("username");
+    // const photo = form.get("photo");
+    // const password = form.get("password");
     console.log(email, username, photo, password);
     const updateUser = { email, username, photo, password };
     console.log(updateUser);
@@ -63,6 +68,7 @@ const UpdateUsers = () => {
 
         //Update User
         fetch(`http://localhost:3000/updateOneUser/${_id}`, {
+          // http://localhost:3000/updateOneUser/66b8f04d733d8fc73b4b052a
           method: "PUT",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(updateUser),
@@ -122,7 +128,7 @@ const UpdateUsers = () => {
               <input
                 type="text"
                 placeholder="Username"
-                namer="username"
+                name="username"
                 defaultValue={user.username}
                 className="input input-bordered"
                 required
