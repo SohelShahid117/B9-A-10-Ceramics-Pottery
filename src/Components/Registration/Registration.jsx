@@ -45,11 +45,14 @@ const Registration = () => {
         // console.log(user);
 
         //CREATE User
-        fetch(`http://localhost:3000/createUser`, {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(userDetails),
-        })
+        fetch(
+          `https://b9-a-10-ceramics-pottery-server-4lx8.vercel.app/createUser`,
+          {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(userDetails),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

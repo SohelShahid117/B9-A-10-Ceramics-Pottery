@@ -27,7 +27,10 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         // loader: () => fetch("./pottery.json"),
-        loader: () => fetch("http://localhost:3000/myPotteryCeramics"),
+        loader: () =>
+          fetch(
+            "https://b9-a-10-ceramics-pottery-server-4lx8.vercel.app/myPotteryCeramics"
+          ),
       },
       {
         path: `/pottery/:_id`,
@@ -36,7 +39,10 @@ const router = createBrowserRouter([
             <PotteryDetails></PotteryDetails>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:3000/myPotteryCeramics"),
+        loader: () =>
+          fetch(
+            "https://b9-a-10-ceramics-pottery-server-4lx8.vercel.app/myPotteryCeramics"
+          ),
       },
       {
         path: "/addPotteryCeramics",
@@ -54,7 +60,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/myPotteryCeramics/${params._id}`),
+          fetch(
+            `https://b9-a-10-ceramics-pottery-server-4lx8.vercel.app/myPotteryCeramics/${params._id}`
+          ),
       },
       {
         path: "/myPotteryCeramics",
@@ -63,7 +71,10 @@ const router = createBrowserRouter([
             <MyPottery></MyPottery>,
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:3000/myPotteryCeramics"),
+        loader: () =>
+          fetch(
+            "https://b9-a-10-ceramics-pottery-server-4lx8.vercel.app/myPotteryCeramics"
+          ),
       },
       {
         path: "/login",
@@ -76,14 +87,16 @@ const router = createBrowserRouter([
       {
         path: "/users",
         element: <Users></Users>,
-        // loader: () => fetch(`http://localhost:3000/users`),
+        // loader: () => fetch(`https://b9-a-10-ceramics-pottery-server-4lx8.vercel.app/users`),
       },
       {
         path: `/updateUsers/:_id`,
         element: <UpdateUsers></UpdateUsers>,
         loader: ({ params }) =>
-          // fetch(`http://localhost:3000/users/${params._id}`),
-          fetch(`http://localhost:3000/users/${params._id}`),
+          // fetch(`https://b9-a-10-ceramics-pottery-server-4lx8.vercel.app/users/${params._id}`),
+          fetch(
+            `https://b9-a-10-ceramics-pottery-server-4lx8.vercel.app/users/${params._id}`
+          ),
       },
     ],
   },

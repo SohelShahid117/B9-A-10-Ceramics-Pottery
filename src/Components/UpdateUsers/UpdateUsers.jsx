@@ -17,7 +17,9 @@ const UpdateUsers = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/getOneUser/${_id}`)
+      .get(
+        `https://b9-a-10-ceramics-pottery-server-4lx8.vercel.app/getOneUser/${_id}`
+      )
       .then((res) => {
         console.log(res);
         console.log(res.data);
@@ -67,12 +69,15 @@ const UpdateUsers = () => {
         // console.log(user);
 
         //Update User
-        fetch(`http://localhost:3000/updateOneUser/${_id}`, {
-          // http://localhost:3000/updateOneUser/66b8f04d733d8fc73b4b052a
-          method: "PUT",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(updateUser),
-        })
+        fetch(
+          `https://b9-a-10-ceramics-pottery-server-4lx8.vercel.app/updateOneUser/${_id}`,
+          {
+            // https://b9-a-10-ceramics-pottery-server-4lx8.vercel.app/updateOneUser/66b8f04d733d8fc73b4b052a
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(updateUser),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

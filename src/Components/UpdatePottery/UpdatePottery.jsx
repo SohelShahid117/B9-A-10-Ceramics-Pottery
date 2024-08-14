@@ -42,11 +42,14 @@ const UpdatePottery = () => {
     console.log(updatePotteryCeramics);
 
     //send data to the server'
-    fetch(`http://localhost:3000/updatePotteryCeramics/${_id}`, {
-      method: "PUT",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(updatePotteryCeramics),
-    })
+    fetch(
+      `https://b9-a-10-ceramics-pottery-server-4lx8.vercel.app/updatePotteryCeramics/${_id}`,
+      {
+        method: "PUT",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(updatePotteryCeramics),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

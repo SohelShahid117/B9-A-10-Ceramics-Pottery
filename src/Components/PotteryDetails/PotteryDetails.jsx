@@ -8,7 +8,9 @@ const PotteryDetails = () => {
 
   useEffect(() => {
     // fetch("/pottery.json")
-    fetch("http://localhost:3000/myPotteryCeramics")
+    fetch(
+      "https://b9-a-10-ceramics-pottery-server-4lx8.vercel.app/myPotteryCeramics"
+    )
       .then((response) => response.json())
       .then((datum) => {
         const val = datum.find((x) => x._id == _id);
