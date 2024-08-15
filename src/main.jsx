@@ -16,6 +16,8 @@ import UpdatePottery from "./Components/UpdatePottery/UpdatePottery";
 import Users from "./Components/Users/Users";
 import UpdateUsers from "./Components/UpdateUsers/UpdateUsers";
 
+//https://b9-a-10-ceramics-pottery.web.app/
+
 const router = createBrowserRouter([
   {
     path: "/",
